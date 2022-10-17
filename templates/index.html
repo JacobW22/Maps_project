@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/@jarstone/dselect/dist/css/dselect.css">
+    <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script> 
+
+    {% load static %}
+
+    <style>
+
+      html,body {
+        width: 100%;
+        height: 100%; 
+        margin: 0px;
+        padding: 0px;
+        overflow-x: hidden; 
+      } 
+
+
+      .vertical-center {
+        min-height: 100%;  
+        display: flex;
+        align-items: center;
+      }
+    
+
+      #lower_container {
+        padding: 0px;
+      }
+
+
+      @media (min-width: 992px) { 
+          iframe {
+            max-height: 500px;
+          }
+       }
+
+
+    #nie_znalezione {
+      resize: none;
+    }
+
+
+    #noselect {
+      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+           -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome, Opera and Firefox */
+    }
+
+    #badge {
+      z-index: 1;
+    }
+
+    #title {
+      color: inherit;
+      text-decoration: inherit;
+    }
+
+
+    </style>
+
+
+  </head>
+  <body>
+    
+
+    <!-- Navbar start-->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <center><h1 class="me-2"><a href="{% url 'index' %}" id="title">Shop Finder</a></h1></center>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
+              <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link disabled">Disabled</a>
+              </li>
+            </ul>
+            <form class="d-flex" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <!-- Navbar end -->
+
+
+    <div class="lower container-fluid" id="lower_container">
+        <div class="row mt-4">
+            <div> 
+                <div class="col-10 offset-1"> 
+
+                    <div class="d-flex justify-content-center">
+                      <h3>Map</h3> 
+                    </div>
+
+                  <form method="post" class="d-flex justify-content-center">
+                    {% csrf_token %}
+                    <button type="submit" name="submit" class="btn btn-dark mb-4 mt-2" onclick="return confirm('Are you sure?')" value="reset">Reset Database</button>
+                  </form>
+
+                    <div class="d-md-flex flex-row mb-2">
+                        <div class="d-flex justify-content-center container-fluid">
+                          <form method="post">
+                            {% csrf_token %}
+
+                            <!-- Search by shop -->
+                            <ul class="list-group list-group-horizontal mt-4 mb-4 justify-content-center">
+                                <li class="list-group-item">
+                                    <select name="select_shop" class="mdb-select md-form" id="select_box">
+                                        {% for key,value in dict_of_shops %}
+                                        {% if key == select_value %}
+                                        <option value={{ key }} selected> {{ value }}</option>
+                                        {% else %}
+                                        <option value={{ key }}> {{ value }}</option>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </select>
+
+                                      {% if number_of_shops > 1 %}
+                                        <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                          {{ number_of_shops }}
+                                          <span class="visually-hidden">shops</span>
+                                        </span>
+                                      {% endif %}
+                                </li>
+                                <li class="list-group-item">
+                                    <button type="submit" name="submit" class="btn btn-dark ">Search</button>
+                                </li>
+
+
+                            <!-- Search by city -->
+                            </ul>
+                            <ul class="list-group list-group-horizontal mt-4 mb-4 justify-content-center">
+                              <li class="list-group-item">
+                                  <select name="select_city" class="mdb-select md-form" id="select_box2">
+                                    {% for city in list_of_cities %}
+                                    {% if city == select_value_city %}
+                                    <option value={{ city }} selected> {{ city }}</option>
+                                    {% else %}
+                                    <option value={{ city }}> {{ city }}</option>
+                                    {% endif %}
+                                    {% endfor %} 
+                                  </select>
+                                  {% if number_of_shops_in_city > 0 %}
+                                        <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                          {{ number_of_shops_in_city }}
+                                          <span class="visually-hidden">shops</span>
+                                        </span>
+                                      {% endif %}
+                              </li>
+                              <li class="list-group-item">
+                                  <button type="submit" name="submit" class="btn btn-dark ">Search</button>
+                              </li>
+                          </ul>
+
+                          </form>
+                        </div>
+                      
+                      {% if nie_znalezione_do_html or empty_list %}
+                        <div class="d-flex container-fluid">
+                          <h4 class=" mb-xs-4 vertical-center text-center text-lg-start justify-content-center" style="width: 100%;">
+
+                            {{ empty_list }} 
+
+                            {% if nie_znalezione_do_html%}
+
+                              <!-- Modal for addresses -->
+                                <div class="modal fade" id="AddressesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable text-start">
+                                  <div class="modal-content">
+                                    <div class="modal-header justify-content-center">
+                                      <h5 class="modal-title" id="exampleModalLabel">Not covered addresses</h5>
+                                    </div>
+                                  <div class="modal-body justify-content-start">
+                                      <h6>{% for shops in nie_znalezione_do_html %}-> {{ shops }}<br>{% endfor %}</h6>
+                                  </div>
+                                    <div class="modal-footer justify-content-center">  
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                  </div>
+                                </div>
+                                </div>
+
+                            <!-- Modal button-->
+                            <ul class="list-group list-group-horizontal">
+                              <li class="list-group-item border-0">
+
+                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#AddressesModal" role="button">View non-included                             
+                              <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                {{ ilosc_nieznalezionych }}
+                                <span class="visually-hidden">non_showed_shops</span>
+                              </span>
+                            </button>
+                                
+                              </li>
+                            </ul>
+                            {% endif %}
+
+                          </h4>
+                        </div>
+                      {% endif %}
+
+                    </div>  
+                </div>    
+
+                  <div id="map" class="col-sm-10 offset-sm-1">
+                    {{m|safe}}
+                  </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+<script>
+
+  var select_box_element = document.querySelector('#select_box');
+  var select_box_element2 = document.querySelector('#select_box2')
+
+  dselect(select_box_element, {
+      search: true
+  }); 
+  
+  dselect(select_box_element2, {
+      search: true
+  });
+
+</script>
+

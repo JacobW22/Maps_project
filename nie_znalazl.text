@@ -1,0 +1,405 @@
+Nie znalazłem:  ['al.Zjednoczenia 106,65-120', 'Kosciuszki 73,99-300', 'sw.Teresy 94,91-341',
+ 'J.Pilsudskiego 1,26-300', 'I.Starzynskiego 26 / 28,95-035', 'Jana II ISobieskiego 10,32-650',
+  'Plk.Wladyslawa Beliny Prazmowskiego 7 a,33-300', 'Kadm.Wlodzimierza Steyera 2 c,07-410',
+   'Plk.Ryszarda Kuklinskiego 1,05-402', 'Trasa Ks.Jerzego Popieluszki 4,09-410', 'Chopina 42,37-450',
+    'Trasa Nikodemai Jozefa Rencow 26,40-878', 'Kosciuszki 93,64-700', 'Zwirkii Wigury 3,63-000']
+/14
+
+Nie znalazłem:  ['al.Zjednoczenia 106,65-120', 'PrzyjaciółŻołnierza 4,68-100', 
+'Kościuszki 73,99-300', 'św.Teresy 94,91-341', 'J.Piłsudskiego 1,26-300', 
+'I.Starzyńskiego 26 / 28,95-035', 'Jana II ISobieskiego 10,32-650',
+ 'Płk.Władysława Beliny Prażmowskiego 7 a,33-300', 'Kadm.Włodzimierza Steyera 2 c,07-410', 
+ 'Płk.Ryszarda Kuklińskiego 1,05-402', 'Trasa Ks.Jerzego Popiełuszki 4,09-410', 
+ 'AlojzegoŻagana 1,07-100', 'WładysławaŁokietka 24  B,49-300', 'PowstańcówŚląskich 4,48-200', 
+ 'Chopina 42,37-450', 'Trasa Nikodemai Józefa Renców 26,40-878', 'StefanaŻeromskiego 2 c,13-230', 
+ 'Kościuszki 93,64-700', 'Żwirkii Wigury 3,63-000']
+
+ /19
+
+  ['Najswietszej Mari i Panny 9,59-220', 'Armi i Krajowej 52 a,59-900', 'Armi i Krajowej 11,58-130',
+   'al.Zjednoczenia 106,65-120', 'Kosciuszki 73,99-300', 'sw.Teresy 94,91-341', 'J.Pilsudskiego 1,26-300', 
+   'I.Starzynskiego 26 / 28,95-035', 'Metalurgi i 11,Radomsko', 'Jana II ISobieskiego 10,32-650',
+    'Plk.Wladyslawa Beliny Prazmowskiego 7 a,33-300', 'Armi i Krajowej 50,05-600',
+     'Kadm.Wlodzimierza Steyera 2 c,07-410', 'Plk.Ryszarda Kuklinskiego 1,05-402', 
+     'Trasa Ks.Jerzego Popieluszki 4,09-410', 'al.Armi i Krajowej 46,47-220', 'Chopina 42,37-450',
+      'Armi i Krajowej 33,16-400', 'Uni i Europejskiej 1,41-922', 'Kosciuszki 93,64-700']
+
+
+ ['Najswietszej Mari i Panny 9,59-220', 'al.Zjednoczenia 106,65-120', 'Kosciuszki 73,99-300', 
+ 'sw.Teresy 94,91-341', 'J.Pilsudskiego 1,26-300', 'I.Starzynskiego 26 / 28,95-035', 
+ 'Metalurgi i 11,Radomsko', 'Jana II ISobieskiego 10,32-650', 'Plk.Wladyslawa Beliny Prazmowskiego 7 a,33-300', 
+ 'Kadm.Wlodzimierza Steyera 2 c,07-410', 'Plk.Ryszarda Kuklinskiego 1,05-402',
+  'Trasa Ks.Jerzego Popieluszki 4,09-410', 'Chopina 42,37-450', 'Uni i Europejskiej 1,41-922', 'Kosciuszki 93,64-700']
+
+  /12  ['al.Zjednoczenia 106,65-120', 'Kosciuszki 73,99-300', 'sw.Teresy 94,91-341',
+   'J.Pilsudskiego 1,26-300', 'I.Starzynskiego 26 / 28,95-035', 'Jana II ISobieskiego 10,32-650', 
+   'Plk.Wladyslawa Beliny Prazmowskiego 7 a,33-300', 'Kadm.Wlodzimierza Steyera 2 c,07-410', 
+   'Plk.Ryszarda Kuklinskiego 1,05-402', 'Trasa Ks.Jerzego Popieluszki 4,09-410', 'Chopina 42,37-450', 
+   'Kosciuszki 93,64-700'] 
+
+
+/13  11 ['al.Zjednoczenia 106,65-120', 'Kosciuszki 73,99-300', 'sw.Teresy 94,91-341', 'J.Pilsudskiego 1,26-300', 
+'I.Starzynskiego 26 / 28,95-035', 'Plk.Wladyslawa Beliny Prazmowskiego 7 a,33-300',
+ 'Kadm.Wlodzimierza Steyera 2 c,07-410', 'Plk.Ryszarda Kuklinskiego 1,05-402', 
+ 'Trasa Ks.Jerzego Popieluszki 4,09-410', 'Chopina 42,37-450', 'Kosciuszki 93,64-700']
+
+ 0  -  Carrefour
+1  -  Castorama
+3  -  IKEA
+4  -  Intermarche Super
+5  -  Jysk
+6  -  Kaufland
+7  -  Leroy Merlin
+8  -  Lidl
+9  -  Media Expert
+10  -  OBI
+11  -  Pepco
+12  -  POLOmarket
+13  -  Rossmann
+14  -  RTV EURO AGD
+15  -  Żabka
+16  -  4F
+17  -  50 style
+18  -  5.10.15
+19  -  ABC
+20  -  Abra
+21  -  Action
+22  -  Adidas
+23  -  Agata
+24  -  Akpol Baby
+25  -  Al.Capone
+26  -  Aldi
+27  -  Alfa Star
+28  -  Allegro
+29  -  Almatur
+30  -  Alsen
+31  -  Apart
+32  -  Api Market
+33  -  Apis
+34  -  Apteka Rodzinna
+35  -  Apteka Zdrowit
+36  -  Aquael Zoo
+37  -  Ara
+38  -  Arhelan
+39  -  ArtDom
+40  -  Art-Dom
+41  -  Astra
+42  -  Astro
+43  -  At
+44  -  Auchan Hipermarket
+45  -  Auchan Supermarket
+46  -  Avita
+47  -  Avon
+48  -  Barbora
+49  -  Bershka
+50  -  BetterStyle
+51  -  bi1
+52  -  Biedronka
+53  -  Big Star
+54  -  Bingo
+55  -  Bio Family
+56  -  Black Red White
+57  -  BLU
+58  -  Blue Cactus
+59  -  Blue Stop
+60  -  BoConcept
+61  -  Bodzio
+62  -  BOG-FRAN
+63  -  Bomi
+64  -  Bonarka City Center
+65  -  BonPrix
+66  -  Bricoman
+67  -  Bricomarche
+68  -  Burger King
+69  -  C&A
+70  -  Calzedonia
+71  -  Carrefour Express
+72  -  Carrefour Market
+73  -  CCC
+74  -  Cersanit
+75  -  Charles Vogele
+76  -  Chata Polska
+77  -  Chorten
+78  -  Coccodrillo
+79  -  Cocktail'me Showroom
+80  -  Coral Travel
+81  -  Cornette
+82  -  Cropp Town
+83  -  Dayli
+84  -  DDD
+85  -  Dealz
+86  -  Decathlon
+87  -  Decathlon XS
+88  -  Decorations.pl
+89  -  Deichmann
+90  -  Dekoria
+91  -  Delikatesy Centrum
+92  -  Delikatesy CEZAR
+93  -  Delikatesy Premium
+94  -  Delisso
+95  -  Deni Cler
+96  -  Ding Poleca
+97  -  Dino
+98  -  Diverse
+99  -  Dobromir
+100  -  Dobry Wybór
+101  -  Douglas
+102  -  Dr.Max Drogeria
+103  -  Drogeria Alicja
+104  -  Drogeria Kosmyk
+105  -  Drogeria Wispol
+106  -  Drogerie Koliber
+107  -  Drogerie Laboo
+108  -  Drogerie Natura
+109  -  Drogerie Polskie
+110  -  Drogerie Sekret Urody
+111  -  DUKA
+112  -  Eko Line
+113  -  Electro World
+114  -  Eminence
+115  -  EMPiK
+116  -  Esotiq
+117  -  Euro Sklep
+118  -  Eurocash Cash&Carry
+119  -  EuroSPAR
+120  -  EXIM Tours
+121  -  Fachowiec
+122  -  Feu Vert
+123  -  Fitbay
+124  -  Flying Tiger Polska
+125  -  Forte
+126  -  Fotojoker
+127  -  FRAC
+128  -  Galeria Krakowska
+129  -  Galeria Mokotów
+130  -  Galeria Sfera
+131  -  Gama
+132  -  Globi
+133  -  Gram Market
+134  -  Grecos Holiday
+135  -  Greenpoint
+136  -  Grene
+137  -  Groszek
+138  -  Hala Banacha
+139  -  Hala Kopińska
+140  -  Hala Wola
+141  -  Hebe
+142  -  Hi Mountain
+143  -  Hildebrandt
+144  -  Hitpol
+145  -  H&M
+146  -  Holly Molly
+147  -  home&you
+148  -  House
+149  -  Husqvarna
+150  -  Inglot
+151  -  Intimissimi
+152  -  Ipson
+153  -  Itaka
+154  -  Jan
+155  -  Jasmin Drogerie
+156  -  Jawa Drogerie
+157  -  Jedynka
+158  -  Jeżyk Market
+159  -  Jubilat
+160  -  Jula
+161  -  Kakadu
+162  -  Kakto.pl
+163  -  KappAhl
+164  -  KFC
+165  -  KIK
+166  -  Kler
+167  -  Kodano.pl
+168  -  Kodeksy w MP3
+169  -  Komfort
+170  -  Komputronik
+171  -  Kontaktowe.pl
+172  -  Kontigo
+173  -  Kontri.pl
+174  -  Korona
+175  -  Kosz Okazji
+176  -  Krople Urody
+177  -  Księgarnie Świat Książki
+178  -  Legallais
+179  -  Lego
+180  -  Lewiatan
+181  -  Livio
+182  -  Loveitshop.pl
+183  -  LPelektronik
+184  -  Luna
+185  -  Majster
+186  -  Makro Cash&Carry
+187  -  MALINKA Market
+188  -  Mango
+189  -  Marks&Spencer
+190  -  Marmax
+191  -  Martes Sport
+192  -  Mary Kay
+193  -  Max Elektro
+194  -  Maxi Zoo
+195  -  McDonald's
+196  -  Meble Gawin
+197  -  Meblik
+198  -  Media Markt
+199  -  Medicine
+200  -  Mega Avans
+201  -  Merkury Market
+202  -  Minutka
+203  -  Mohito
+204  -  Moje Auchan
+205  -  Mokpol
+206  -  Moliera2
+207  -  Monnari
+208  -  MyCenter
+209  -  Nasz Sklep
+210  -  Naszadrogeria.pl
+211  -  Nela
+212  -  NEOPUNKT
+213  -  Net Credit
+214  -  Netcar.pl
+215  -  Netto
+216  -  Nikolia
+217  -  NKD
+218  -  Norauto
+219  -  North Fish
+220  -  Odido
+221  -  Organic
+222  -  Oriflame
+223  -  Oskar Tours
+224  -  Oysho
+225  -  Papiernik by Empik
+226  -  Passa
+227  -  Patio
+228  -  Pizza Hut
+229  -  Plus
+230  -  Plus Wakacje
+231  -  Podwawelskie Delikatesy
+232  -  Pokusa
+233  -  Prim Market
+234  -  Primark
+235  -  Primus
+236  -  Profiauto
+237  -  PSB BAT
+238  -  PSB Mrówka
+239  -  PSS Andrychów
+240  -  PSS Bochnia
+241  -  PSS Lublin
+242  -  PSS Rzeszów
+243  -  PSS Społem Białystok
+244  -  PSS Społem Częstochowa
+245  -  PSS Społem Głogów
+246  -  PSS Społem Gniezno
+247  -  PSS Społem Katowice
+248  -  PSS Społem Nowy Sącz
+249  -  PSS Społem Poznań
+250  -  PSS Społem Szczecin
+251  -  PSS Społem Zawiercie
+252  -  PSS Stalowa Wola
+253  -  PSS Zamość
+254  -  PSS Zgoda Płock
+255  -  Pull&Bear
+256  -  Rabat
+257  -  Rainbow Tours
+258  -  Ramex
+259  -  Rebel Electro
+260  -  Reebok
+261  -  Reserved
+262  -  Restol
+263  -  RYŁKO
+264  -  Samanta
+265  -  Samsonite
+266  -  Samsung-kupony
+267  -  Sano
+268  -  Sarenza
+269  -  Sedal
+270  -  Selgros Cash&Carry
+271  -  Selsey
+272  -  Sephora
+273  -  Sezamek
+274  -  SHEIN
+275  -  Shopee
+276  -  Silcare
+277  -  Silesia City Center
+278  -  Sinsay
+279  -  Sklep Polski
+280  -  Słoneczko
+281  -  Smyk
+282  -  SPAR
+283  -  SPAR Express
+284  -  Specjał
+285  -  Spiżarnia Smakosza
+286  -  Społem Kielce
+287  -  Społem Olsztyn
+288  -  Społem PSS w Bełchatowie
+289  -  Społem WSS Śródmieście
+290  -  Spółdzielnia Handlowa Społem Arged
+291  -  Stiga
+292  -  Stilago
+293  -  Stokrotka Express
+294  -  Stokrotka Market
+295  -  Stokrotka Optima
+296  -  Stokrotka Supermarket
+297  -  Stop&Shop
+298  -  Stradivarius
+299  -  Strefa Wnętrza
+300  -  Subway
+301  -  Sun&Fun Holidays
+302  -  Sunshine Holiday
+303  -  Supeco
+304  -  Super-Pharm
+305  -  Sużyw
+306  -  Świat Opinii
+307  -  Takko
+308  -  Tatuum
+309  -  Tchibo
+310  -  TEDi
+311  -  Telepizza
+312  -  Telezakupy Mango
+313  -  Tesco Market
+314  -  Tescoma
+315  -  Tifo
+316  -  T-Mobile
+317  -  TomiMarkt
+318  -  Top Market
+319  -  Top Secret
+320  -  Topaz
+321  -  Torimpex
+322  -  Toys“R“Us
+323  -  Tres
+324  -  Triumph
+325  -  TUI
+326  -  Tupperware
+327  -  Twój Market
+328  -  Uśmiechnięte zakupy
+329  -  Vica
+330  -  Victoria's Secret
+331  -  Vital
+332  -  VOX
+333  -  Wafelek
+334  -  Weltbild
+335  -  Westfield Arkadia
+336  -  Witek Home
+337  -  Wittchen
+338  -  W.Kruk
+339  -  Wojas
+340  -  Wójcik Fashion
+341  -  Wyspa szkrabów
+342  -  YES
+343  -  Zalando
+344  -  Zara
+345  -  Zielony Koszyk
+346  -  Zielony Market
+347  -  Ziko Dermo
+348  -  Zina
+349  -  Złote Tarasy
+350  -  Zooplus.pl
+
+
+
+['Tworkowa 36 a,32-863'] 12
+20
+['Tymbark 499,34-650'] 13
+20
+[',Tymbark'] 14
+20
+['Legionow 3 a,34-100'] 15
