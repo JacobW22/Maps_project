@@ -1,75 +1,17 @@
 <!doctype html>
 <html lang="pl">
   <head>
+    {% load static %}
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/@jarstone/dselect/dist/css/dselect.css">
-
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 
     <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script> 
-
-    {% load static %}
-
-    <style>
-
-      html,body {
-        width: 100%;
-        height: 100%; 
-        margin: 0px;
-        padding: 0px;
-        overflow-x: hidden; 
-      } 
-
-
-      .vertical-center {
-        min-height: 100%;  
-        display: flex;
-        align-items: center;
-      }
-    
-
-      #lower_container {
-        padding: 0px;
-      }
-
-
-      @media (min-width: 992px) { 
-          iframe {
-            max-height: 500px;
-          }
-       }
-
-
-    #nie_znalezione {
-      resize: none;
-    }
-
-
-    #noselect {
-      -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-         -khtml-user-select: none; /* Konqueror HTML */
-           -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                      supported by Chrome, Opera and Firefox */
-    }
-
-    #badge {
-      z-index: 1;
-    }
-
-    .linkk {
-      color: inherit;
-      text-decoration: inherit;
-    }
-
-
-    </style>
-
 
   </head>
   <body>
@@ -86,26 +28,13 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'schema-swagger-ui' %}" class="linkk">Api</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li>
+              </li> 
+
               <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
+                <a class="nav-link" href="#" class="linkk">Documentation</a>
               </li>
+          
             </ul>
-            <form class="d-flex" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
           </div>
         </div>
       </nav>
@@ -113,7 +42,7 @@
 
 
     <div class="lower container-fluid" id="lower_container">
-        <div class="row mt-4">
+        <div class="row mt-2">
             <div> 
                 <div class="col-10 offset-1"> 
 

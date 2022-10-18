@@ -44,7 +44,7 @@ class ShopFinderAPIView(APIView):
 
     Get chosen shops
 
-    Only one parameter is required to work, showing shop details
+    Only one parameter is required to work, shows shop details
 
     """
 
