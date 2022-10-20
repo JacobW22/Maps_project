@@ -6,13 +6,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Bootstrap demo</title>
+    <title>Shop Finder</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/@jarstone/dselect/dist/css/dselect.css">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@jarstone/dselect/dist/js/dselect.js"></script> 
-
+    
   </head>
   <body>
     
@@ -31,9 +32,8 @@
               </li> 
 
               <li class="nav-item">
-                <a class="nav-link" href="#" class="linkk">Documentation</a>
+                <a class="nav-link" href="{% url 'AboutApp' %}" class="linkk">About App</a>
               </li>
-          
             </ul>
           </div>
         </div>
@@ -166,8 +166,17 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-  </body>
+
+<!-- Footer start -->
+<footer class="fixed-bottom" id="footer">
+  <hr>
+  <div class="text-center pb-3">
+    © 2022 Shop Finder
+  </div>
+</footer>
+<!-- Footer end -->
+
+</body>
 </html>
 
 <script>

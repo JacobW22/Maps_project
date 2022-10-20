@@ -23,8 +23,40 @@ html,body {
       iframe {
         max-height: 500px;
       }
+      .col-md-4 {
+        overflow: hidden;
+      }
+      .col-md-4 img{
+        transition: all 1.5s  ease;
+      }
+    
+      .col-md-4:hover img {
+          transform: scale(1.5);
+        }
+    
+      .card {
+          transition: all 1.5s ease;
+      }
+      
+      .card:hover {
+          transform: scale(1.5);
+          z-index: 1;    
+      }
    }
 
+  @media (min-width: 992px) { 
+    #footer_about_app {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  }
+  
+  @media (max-height: 720px) { 
+    #footer {
+      display: none;
+    }
+  }
 
   #nie_znalezione {
     resize: none;
@@ -56,4 +88,6 @@ html,body {
 
   .linkk:hover {
     color: brown;
-  }
+  } 
+
+  

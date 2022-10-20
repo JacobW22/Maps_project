@@ -120,6 +120,10 @@ class ShopFinderAPIView(APIView):
 
             raise Http404
 
+def AboutApp(request):
+    return render(request, 'AboutApp.html')
+
+
 
 def index(request):
 

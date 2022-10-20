@@ -23,6 +23,7 @@ schema_view = get_schema_view(
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', map_views.index, name='index'),
+    path('AboutApp/', map_views.AboutApp, name='AboutApp'),
     path('api/all_shops/', map_views.ShoplistAPIView.as_view()),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     re_path(r'^api/chosen_shops/$', map_views.ShopFinderAPIView.as_view(), name='combined-list'),
