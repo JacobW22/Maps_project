@@ -263,3 +263,4 @@ def main(shop_number):
 	return lista_sklepow 	# Wyświetl wszystkie adresy sklepu
 
 
+main(19)

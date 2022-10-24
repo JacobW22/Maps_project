@@ -29,7 +29,6 @@ class ShoplistAPIView(generics.ListAPIView):
 
     """
     queryset = Shop.objects.all().order_by('city')
-    serializer_class = ShopSerializer
 
     def list(self, request):
         # Note the use of `get_queryset()` instead of `self.queryset`
@@ -119,6 +118,7 @@ class ShopFinderAPIView(APIView):
         else:
 
             raise Http404
+
 
 def AboutApp(request):
     return render(request, 'AboutApp.html')
@@ -220,40 +220,43 @@ def index(request):
 
             Shop.objects.all().delete()
             
-            for i in range(10,11):
+            for i in range(16,20):
             # for i in range(0, len(dict_from_other_file)):
+                if i == 2:
+                    pass
+                else:
 
-                lista_z_pliku = python_soup_fully.main(i)
-            
-                # Create Map Object and representation in HTML
-            
-                if lista_z_pliku[0] == "Nie znaleziono adresów":
-                        data = Shop(name=lista_z_pliku[1], city = "empty", latitude=0, longitude=0)
-                        data.save()
-                else:        
-                    for i in lista_z_pliku:
-                        print("Loading data...")
-                        locator = Nominatim(user_agent="myGeocoder")
-
-                        location = locator.geocode(i[0], timeout = 10)
-                    
+                    lista_z_pliku = python_soup_fully.main(i)
                 
-                        if location is not None:
-                            try:
-                                latitude.append(location.latitude)
-                                longtitude.append(location.longitude)
-                                
-                                description = i[1].replace(",","<br>")
-                                data = Shop(name=i[-1], city=i[-2], address=i[0], latitude=location.latitude, longitude=location.longitude,open_hours=description)
-                                data.save()
-
-                            except GeocoderTimedOut as e:
-                                nie_znalezione.append(i[0])
-                                print("nie znalazłem",len(nie_znalezione), nie_znalezione)
-                        else: 
-                            nie_znalezione.append(i[0])
-                            data = Shop(name=i[-1], address=i[0], open_hours="cant_find", city=i[-2], longitude = 0, latitude = 0)
+                    # Create Map Object and representation in HTML
+                
+                    if lista_z_pliku[0] == "Nie znaleziono adresów":
+                            data = Shop(name=lista_z_pliku[1], city = "empty", latitude=0, longitude=0)
                             data.save()
+                    else:        
+                        for i in lista_z_pliku:
+                            print("Loading data...")
+                            locator = Nominatim(user_agent="myGeocoder")
+
+                            location = locator.geocode(i[0]+", Polska", timeout = 10)
+                        
+                    
+                            if location is not None:
+                                try:
+                                    latitude.append(location.latitude)
+                                    longtitude.append(location.longitude)
+                                    
+                                    description = i[1].replace(",","<br>")
+                                    data = Shop(name=i[-1], city=i[-2], address=i[0], latitude=location.latitude, longitude=location.longitude,open_hours=description)
+                                    data.save()
+
+                                except GeocoderTimedOut as e:
+                                    nie_znalezione.append(i[0])
+                                    print("nie znalazłem",len(nie_znalezione), nie_znalezione)
+                            else: 
+                                nie_znalezione.append(i[0])
+                                data = Shop(name=i[-1], address=i[0], open_hours="cant_find", city=i[-2], longitude = 0, latitude = 0)
+                                data.save()
             
             data = Shop(name="Nie znalezione sklepy ogółem", address=len(nie_znalezione), city="empty", longitude=0, latitude=0)
             data.save()
@@ -262,16 +265,21 @@ def index(request):
 
     # get from database
 
+
     f = open("static/nie_znalezione_adresy.txt", "w")
 
     f.write("Nieznalezione adresy: \n")
 
     ilosc_nieznalezionych = len(nie_znalezione_do_html)
+        
 
     for i in nie_znalezione_do_html:
-        f.write("-> " + i + "\n")
+        f.write("-> " + i + "\n")   
 
     f.close()
+
+
+
 
 
     shop_list = Shop.objects.filter().all()
@@ -279,8 +287,9 @@ def index(request):
     list_of_cities.append("Choose your city")
 
     for i in shop_list:
-        if i.city != '' or i.city != 'empty':
-            list_of_cities.append(i.city)
+        if i.city != '' and i.city != 'empty':
+            if bool(re.search(r'\d', i.city)) == False:
+                list_of_cities.append(i.city)   
 
     list_of_cities = list(dict.fromkeys(list_of_cities))
 

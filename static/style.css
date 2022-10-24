@@ -44,7 +44,7 @@ html,body {
       }
    }
 
-  @media (min-width: 992px) { 
+  @media (min-width: 1400px) { 
     #footer_about_app {
       position: fixed;
       bottom: 0;
