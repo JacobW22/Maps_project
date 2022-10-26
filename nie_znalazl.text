@@ -418,3 +418,24 @@ Traceback (most recent call last):
   File "C:\Users\petex\Documents\django-maps-project\Mapproject\map\python_soup_fully.py", line 176, in scraping
     i.append(do_dodania2[0::2][index])
 IndexError: list index out of range
+
+
+
+
+https://www.promoceny.pl/sklepy/szukaj/charles-v-gele/p/1
+Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\petex\Documents\django-maps-project\mapproject\myenv\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\petex\Documents\django-maps-project\mapproject\myenv\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\petex\Documents\django-maps-project\Mapproject\map\views.py", line 229, in index
+    lista_z_pliku = python_soup_fully.main(i)
+  File "C:\Users\petex\Documents\django-maps-project\Mapproject\map\python_soup_fully.py", line 224, in main
+    lista = scraping(url)
+  File "C:\Users\petex\Documents\django-maps-project\Mapproject\map\python_soup_fully.py", line 173, in scraping
+    i.append(do_dodania[index])
+IndexError: list index out of range
+
+
++ 4h od zabka

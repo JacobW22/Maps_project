@@ -89,7 +89,7 @@ def main(shop_number):
 			return any(char.isdigit() for char in inputString)
 
 		for i in tabela:	
-			if "Niedziela" in i:
+			if "Niedziela" in i or "niedziela" in i:
 				do_dodania.append(i)
 				do_usuniecia.append(i)
 
@@ -113,9 +113,9 @@ def main(shop_number):
 
 
 		for i in do_dodania2:
-			if "Tel" in i:
+			if "Tel" in i and has_numbers(i) == True:
 				do_dodania2.remove(i)
-			if "tel" in i  and has_numbers(i) == True:
+			if "tel" in i and has_numbers(i) == True:
 				do_dodania2.remove(i)
 
 
@@ -125,7 +125,6 @@ def main(shop_number):
 
 			if "tel" in i and has_numbers(i) == True:
 				do_usuniecia.remove(i)
-
 
 
 		for i in do_usuniecia:
@@ -263,4 +262,5 @@ def main(shop_number):
 
 		print()
 	return lista_sklepow 	# Wyświetl wszystkie adresy sklepu
+
 
