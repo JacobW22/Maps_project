@@ -281,18 +281,19 @@ def index(request):
 
     shop_list = Shop.objects.filter().all().order_by('city')
 
+    name_of_shops = dict_from_other_file.values()
+
     list_of_cities.append("Choose your city")
 
     for i in shop_list:
         if i.city != '' and i.city != 'empty':
-            if bool(re.search(r'\d', i.city)) == False:
+            if bool(re.search(r'\d', i.city)) == False and i.city not in name_of_shops:
                 list_of_cities.append((i.city).replace(',',''))   
 
     
 
     list_of_cities = list(dict.fromkeys(list_of_cities))
     
-
 
     
     dict_of_shops = list_of_shops_in_dict.items()
