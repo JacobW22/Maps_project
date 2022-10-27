@@ -2,7 +2,6 @@ from bs4 import BeautifulSoup
 
 import requests
 import re 
-import unidecode
 
 # Wyswietl wszystkie sklepy oraz ich adresy
 
@@ -89,6 +88,12 @@ def main(shop_number):
 			return any(char.isdigit() for char in inputString)
 
 		for i in tabela:	
+			if "Piotrkowska252/256," == i:
+				index = tabela.index(i)
+				do_usuniecia.append(i)
+				string = "Piotrkowska252/256," + tabela[index+1]
+				tabela[index+1] = string
+
 			if "Niedziela" in i or "niedziela" in i:
 				do_dodania.append(i)
 				do_usuniecia.append(i)
@@ -131,22 +136,15 @@ def main(shop_number):
 			tabela.remove(i)
 			
 
-		location = []
 		data = []
-		iteration = 0
-		iteration2 = 0
-		sum_of_upper = 0
-		new_string = ""
 
 		tabela = list(dict.fromkeys(tabela))
 		
 		for i in tabela:
 			index = tabela.index(i)
 
-
 			i = i.split(",")
 
-			# i[0] = unidecode.unidecode(i[0])
 			i[0] = i[0].replace("Zwirkii","Zwirki i")
 			i[0] = i[0].replace("Nikodemai", "Nikodema i")
 			i[0] = i[0].replace("-", " ")

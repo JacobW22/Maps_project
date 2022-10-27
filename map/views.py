@@ -1,8 +1,8 @@
-from django.shortcuts import render,HttpResponseRedirect
+from django.shortcuts import render
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut
 from folium.plugins import MarkerCluster, LocateControl
-from rest_framework import generics, permissions
+from rest_framework import generics
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
@@ -10,7 +10,6 @@ from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
 
 import folium
-import requests
 import re 
 
 from map import python_soup_fully 
@@ -28,6 +27,7 @@ class ShoplistAPIView(generics.ListAPIView):
     Shows all shops in the project database, 50 shops per page
 
     """
+
     queryset = Shop.objects.all().order_by('city')
 
     def list(self, request):
@@ -135,7 +135,6 @@ def index(request):
     longtitude = []
     nie_znalezione = []
     nie_znalezione_do_html = []
-    markers_location = []
     list_of_cities = []
 
     dict_from_other_file = list_of_shops_in_dict
@@ -221,15 +220,13 @@ def index(request):
             # Shop.objects.all().delete()
             
             # for i in range(16,20):
-            for i in range(77, len(dict_from_other_file)):
+            for i in range(262, len(dict_from_other_file)):
                 if i == 2:
                     pass
                 else:
 
                     lista_z_pliku = python_soup_fully.main(i)
-                
-                    # Create Map Object and representation in HTML
-                
+                                
                     if lista_z_pliku[0] == "Nie znaleziono adresów":
                             data = Shop(name=lista_z_pliku[1], city = "empty", latitude=0, longitude=0)
                             data.save()
@@ -282,24 +279,20 @@ def index(request):
 
 
 
-    shop_list = Shop.objects.filter().all()
+    shop_list = Shop.objects.filter().all().order_by('city')
 
     list_of_cities.append("Choose your city")
 
     for i in shop_list:
         if i.city != '' and i.city != 'empty':
             if bool(re.search(r'\d', i.city)) == False:
-                list_of_cities.append(i.city)   
+                list_of_cities.append((i.city).replace(',',''))   
+
+    
 
     list_of_cities = list(dict.fromkeys(list_of_cities))
-
     
 
-    # for lat, lng, name in zip(latitude, longtitude, name):
-    #     feature_group.add_child(folium.Marker(location=[lat,lng], tooltip="Click for more", popup=name))
-
-   
-    
 
     
     dict_of_shops = list_of_shops_in_dict.items()
