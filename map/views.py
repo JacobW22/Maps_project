@@ -17,7 +17,6 @@ from map.models import Shop
 from map.python_soup_fully import list_of_shops_in_dict
 from map.serializers import ShopSerializer
 
-# Create your views here.        
 
 class ShoplistAPIView(generics.ListAPIView):
     """
@@ -31,7 +30,6 @@ class ShoplistAPIView(generics.ListAPIView):
     queryset = Shop.objects.all().order_by('city')
 
     def list(self, request):
-        # Note the use of `get_queryset()` instead of `self.queryset`
         queryset = self.get_queryset()
         serializer = ShopSerializer(queryset, many=True)
         return Response(serializer.data)
@@ -124,17 +122,13 @@ def AboutApp(request):
     return render(request, 'AboutApp.html')
 
 
-
 def index(request):
 
     m = folium.Map(location=[52,19],zoom_start=5.2)
     mCluster = MarkerCluster(name="Selected shop")
     mCluster2 = MarkerCluster(name="Selected city")
     
-    latitude = []
-    longtitude = []
-    nie_znalezione = []
-    nie_znalezione_do_html = []
+    unknown_to_html = []
     list_of_cities = []
 
     dict_from_other_file = list_of_shops_in_dict
@@ -143,11 +137,13 @@ def index(request):
     number_of_shops_in_city = 0
     select_value = 'default'
     select_value_city = 'Choose your shop'
-    ilosc_nieznalezionych = 0
+    unknown_quantity = 0
   
 
 
     if request.method == "POST": 
+
+        # React to selected option and add markers to map
 
         if request.POST.get('select_city'):
 
@@ -159,10 +155,9 @@ def index(request):
                     if one_shop.city == "empty":
                         empty_list = "Brak sklepów stacjonarnych"
 
-                    elif one_shop.open_hours == "cant_find":
+                    elif one_shop.longitude == 0 and one_shop.latitude == 0:
                         information_about_address =  one_shop.address + ", " + one_shop.city + ", " + one_shop.name
-                        nie_znalezione_do_html.append(information_about_address) 
-
+                        unknown_to_html.append(information_about_address) 
 
                     else:
                         info = "<center>" + one_shop.address + "<br><br>" + "<div style='width: 100%; height: 20px; border-top: 1px solid black; border-bottom: 1px solid black; text-align: center'>" + one_shop.name + "</div>" + "<div style='width: 100%; height: 20px; border-bottom: 1px solid black; text-align: center'>" + one_shop.city + "</div><br>" + one_shop.open_hours + "</center>"
@@ -176,17 +171,17 @@ def index(request):
         mCluster2.add_to(m)
 
 
+        # React to selected option and add markers to map
+
         if request.POST.get('select_shop'):
 
             select_value = request.POST.get('select_shop') 
-
 
             if select_value == 'default':
                 pass
             else:
                 name_of_the_shop = dict_from_other_file[int(select_value)]
                 name_of_the_shop = re.sub(' +', '', name_of_the_shop)
-
 
                 shop_list = Shop.objects.filter(name = name_of_the_shop.strip()).order_by('city')
                 number_of_shops = shop_list.count()
@@ -195,10 +190,9 @@ def index(request):
                     if one_shop.city == "empty":
                         empty_list = "Brak sklepów stacjonarnych"
 
-                    elif one_shop.open_hours == "cant_find":
+                    elif one_shop.longitude == 0 and one_shop.latitude == 0:
                         information_about_address =  one_shop.address + ", " + one_shop.city + ", " + one_shop.name
-                        nie_znalezione_do_html.append(information_about_address) 
-
+                        unknown_to_html.append(information_about_address) 
 
                     else:
                         info = "<center>" + one_shop.address + "<br><br>" + "<div style='width: 100%; height: 20px; border-top: 1px solid black; border-bottom: 1px solid black; text-align: center'>" + one_shop.name + "</div><br>" + one_shop.open_hours + "</center>"
@@ -213,18 +207,17 @@ def index(request):
             
 
         
-        
+        #  Sending data from scraping to database 
+
         if request.POST['submit'] == 'reset':
 
-
-            # Shop.objects.all().delete()
+            Shop.objects.all().delete()
             
             # for i in range(16,20):
-            for i in range(262, len(dict_from_other_file)):
+            for i in range(0, len(dict_from_other_file)):
                 if i == 2:
                     pass
                 else:
-
                     lista_z_pliku = python_soup_fully.main(i)
                                 
                     if lista_z_pliku[0] == "Nie znaleziono adresów":
@@ -240,44 +233,34 @@ def index(request):
                     
                             if location is not None:
                                 try:
-                                    latitude.append(location.latitude)
-                                    longtitude.append(location.longitude)
-                                    
                                     description = i[1].replace(",","<br>")
                                     data = Shop(name=i[-1], city=i[-2], address=i[0], latitude=location.latitude, longitude=location.longitude,open_hours=description)
                                     data.save()
 
                                 except GeocoderTimedOut as e:
-                                    nie_znalezione.append(i[0])
-                                    print("nie znalazłem",len(nie_znalezione), nie_znalezione)
+                                    print(e)
                             else: 
-                                nie_znalezione.append(i[0])
-                                data = Shop(name=i[-1], address=i[0], open_hours="cant_find", city=i[-2], longitude = 0, latitude = 0)
-                                data.save()
-            
-            data = Shop(name="Nie znalezione sklepy ogółem", address=len(nie_znalezione), city="empty", longitude=0, latitude=0)
-            data.save()
-                        
+                                data = Shop(name=i[-1], address=i[0], open_hours=description, city=i[-2], longitude = 0, latitude = 0)
+                                data.save()       
         
 
-    # get from database
+    # Write non-included addresses to file
 
 
     f = open("static/nie_znalezione_adresy.txt", "w")
 
     f.write("Nieznalezione adresy: \n")
 
-    ilosc_nieznalezionych = len(nie_znalezione_do_html)
+    unknown_quantity = len(unknown_to_html)
         
 
-    for i in nie_znalezione_do_html:
+    for i in unknown_to_html:
         f.write("-> " + i + "\n")   
 
     f.close()
 
 
-
-
+    # Search shops to second select options
 
     shop_list = Shop.objects.values_list('city',flat=True).distinct().order_by('city')
 
@@ -295,10 +278,10 @@ def index(request):
                     list_of_cities.remove(city)
 
 
-
     list_of_cities = list(dict.fromkeys(list_of_cities))
     
 
+    # Send to template
     
     dict_of_shops = list_of_shops_in_dict.items()
 
@@ -315,12 +298,12 @@ def index(request):
         'm' : m,
         'dict_of_shops' : dict_of_shops,
         'empty_list' : empty_list,
-        'nie_znalezione_do_html' : nie_znalezione_do_html,
+        'unknown_to_html' : unknown_to_html,
         'number_of_shops' : number_of_shops,
         'number_of_shops_in_city' : number_of_shops_in_city,
         'select_value' : select_value,
         'select_value_city' : select_value_city,
-        'ilosc_nieznalezionych' : ilosc_nieznalezionych,
+        'unknown_quantity' : unknown_quantity,
         'list_of_cities' : list_of_cities,
     }
 

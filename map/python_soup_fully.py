@@ -3,42 +3,37 @@ from bs4 import BeautifulSoup
 import requests
 import re 
 
-# Wyswietl wszystkie sklepy oraz ich adresy
+# Show shops and addresses
 
 
 url = "https://www.promoceny.pl/sklepy/"
 
-
 result = requests.get(url)
 
-
 doc = BeautifulSoup(result.text, "html.parser")
-
 
 tag = doc.find_all('ul', class_="col-md-4")
 
 
-dict = {}	# Słownik nazwa_sklepu = klucz, link = wartość
-dict_name_of_shops = {}	# Słownik number = klucz, nazwa_sklepu = wartość
+dict = {}	#  Dict name_of_the_shop = key, link = value
+dict_name_of_shops = {}	#  Dict number = key, name_of_the_shop = value
 dict_name_of_shops['default'] = 'Choose your shop'
-
 
 key = 0
 
-# Stwórz słownik zawierający numer i nazwę sklepu
+# Create dict from id and name of the shop
 
 for i in tag:
 	for a in i.find_all('a', href=True):
 		name = a.find("strong")
 
-		if name == None:	# wyszukaj nazwę sklepu w przypadku tagu span
+		if name == None:	
 			span = a.find("span")
 			# print(span.text)
 			dict[span.text] = a['href']
 			dict_name_of_shops[key] = span.text
 
-
-		else:				# wyszukaj nazwę sklepu w przypadku tagu strong
+		else:				
 			# print(name.text)
 			dict[name.text] = a['href']
 			dict_name_of_shops[key] = name.text
@@ -46,22 +41,17 @@ for i in tag:
 		key += 1
 
 		
-
-# Wybierz sklep
-
-del dict_name_of_shops[2]
+del dict_name_of_shops[2] 
 list_of_shops_in_dict = dict_name_of_shops
 
 
 def main(shop_number):
 	def scraping(url):
 
-		# Wybierz rekordy z tabeli umieszczonej na stronie
+		# From table on web
 
 		result = requests.get(url)
 		doc = BeautifulSoup(result.text, "html.parser")
-
-		shops = doc.find_all('tr')
 
 		text = ""
 
@@ -70,15 +60,15 @@ def main(shop_number):
 			
 
 
-		text = re.sub(' +', '', text)	# Usuń białe znaki
+		text = re.sub(' +', '', text)	# Del white spaces
 
-		tabela = text.split()	# Umieść tekst w liście
-
-
-		del tabela[:7]	# Usun nagłówki tabeli
+		tabela = text.split()	
 
 
-		# Usuń niepotrzebne rekordy
+		del tabela[:7]	# Delete table headers
+
+
+		# Delete wrong table records
 
 		do_usuniecia = []
 		do_dodania = []
@@ -140,6 +130,9 @@ def main(shop_number):
 
 		tabela = list(dict.fromkeys(tabela))
 		
+
+		# Format output of shop information
+
 		for i in tabela:
 			index = tabela.index(i)
 
@@ -163,6 +156,7 @@ def main(shop_number):
 				i.remove(i[1])
 
 
+			# To debug 
 			# print(len(do_dodania2))
 			# print(do_dodania2[index])
 			# print(i, index)
@@ -170,7 +164,6 @@ def main(shop_number):
 			i.append(do_dodania[index])
 			
 	
-
 			if (index+1) < len(do_dodania2):
 				i.append(do_dodania2[0::2][index])
 				i.append(do_dodania2[1])
@@ -184,7 +177,7 @@ def main(shop_number):
 		return data
 
 	
-	selected_shop = dict[dict_name_of_shops[int(shop_number)]]	# wyszukaj link do wybranego sklepu
+	selected_shop = dict[dict_name_of_shops[int(shop_number)]]	# Search link to selected shop
 
 
 	url = "https://www.promoceny.pl"
@@ -193,16 +186,12 @@ def main(shop_number):
 
 
 
-	# sprawdz ilosc stron ze sklepami
-
-
+	# Check how many pages 
 
 	result = requests.get(url)
 	doc = BeautifulSoup(result.text, "html.parser")
 
-
 	number_of_sites = doc.find_all('ul', class_="pagination")
-
 
 	strony = ""
 	lista = []
@@ -214,7 +203,7 @@ def main(shop_number):
 	lista_sklepow = []
 
 
-	# Utwórz zakres pętli w oparciu o ilość dostępnych stron
+	# Create range from first page to last
 
 	if strony == "":
 		print(url)
@@ -235,17 +224,17 @@ def main(shop_number):
 
 
 
-	# wyswietl adresy sklepow
+	# Show addresses
 
 
 		print(zakres)
 		print()
 
 
-		for i in range(zakres[0],zakres[-1]+1):	# Wybierz pierwsza i ostatnią stronę jako zakres
+		for i in range(zakres[0],zakres[-1]+1):	# First page and last 
 			replacementStr = str(i)
 
-			if i < 10:	# Utwórz linki dla dostępnych stron
+			if i < 10:	# Create links for pages
 				url = url[:-1] + replacementStr
 			elif i == 10:
 				url = url[:-2] + "/" + replacementStr
@@ -255,10 +244,11 @@ def main(shop_number):
 				url = url[:-3] + "/" + replacementStr
 
 			print(url)
-			lista_sklepow.extend(scraping(url))	# Dodaj adresy sklepów z obecnej strony
+			lista_sklepow.extend(scraping(url))	# All addresses from page
 
 
 		print()
-	return lista_sklepow 	# Wyświetl wszystkie adresy sklepu
+		
+	return lista_sklepow 	
 
 

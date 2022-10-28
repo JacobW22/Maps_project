@@ -6,7 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>About app</title>
+    <title>Shop Finder</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -54,6 +55,7 @@
         search and display all the stores across Poland. 
         The application is based on data from <strong>https://www.promoceny.pl/sklepy/</strong>,
         which is collected using Web Scraping and kept in the database. 
+        You can search among 70,000 addresses of well-known companies.
         There is also a free API that sends the collected information about stores.
       </div>
     </div>
@@ -116,7 +118,7 @@
           <div class="card-body">
             <h5 class="card-title">Non included addresses</h5>
             <p class="card-text">
-              Due to the use of an inaccurate geocoder, some addresses may not be processed into coordinates. 
+              Due to the use of an free geocoder, some addresses may not be processed into coordinates. 
               They will appear in the "Non-included" section.
             </p>
             <p class="card-text"><small class="text-muted">Shop Finder v.1.0</small></p>
@@ -174,9 +176,9 @@
 <!-- Footer start -->
 <footer id="footer_about_app">
   <hr>
-    <div class="text-center pb-3">
-      © 2022 Shop Finder
-    </div>
+  <div class="text-center pb-3">
+    © 2022 Shop Finder
+  </div>
 </footer>
 <!-- Footer end -->
 

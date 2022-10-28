@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Shop Finder</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link href="{% static 'bootstrap/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'dselect/dselect.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
@@ -16,7 +17,6 @@
 
   </head>
   <body>
-    
 
     <!-- Navbar start-->
     <nav class="navbar navbar-expand-lg">
@@ -30,7 +30,6 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'schema-swagger-ui' %}" class="linkk">Api</a>
               </li> 
-
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'AboutApp' %}" class="linkk">About App</a>
               </li>
@@ -46,20 +45,24 @@
             <div> 
                 <div class="col-10 offset-1"> 
 
-                    <div class="d-flex justify-content-center">
-                      <h3>Map</h3> 
-                    </div>
-
+                  <div class="d-flex justify-content-center">
+                    <h3>Map</h3> 
+                  </div>
+                  
+                  <!-- Reset button start -->
                   <form method="post" class="d-flex justify-content-center">
                     {% csrf_token %}
-                    <button type="submit" name="submit" class="btn btn-dark mb-4 mt-2" onclick="return confirm('Are you sure?')" value="reset">Reset Database</button>
+                    <button type="submit" name="submit" class="btn btn-dark mb-4 mt-2" onclick="return confirm('Estimated time to fully load data:\naround 10 hours')" value="reset">Reset Database</button>
                   </form>
+                  <!-- Reset button end -->
 
                     <div class="d-md-flex flex-row mb-2">
+
+                        <!-- Container for columns start -->
                         <div class="d-flex justify-content-center container-fluid">
+                          
                           <form method="post">
                             {% csrf_token %}
-
                             <!-- Search by shop -->
                             <ul class="list-group list-group-horizontal mt-4 mb-4 justify-content-center">
                                 <li class="list-group-item">
@@ -85,76 +88,82 @@
                                 </li>
 
 
-                            <!-- Search by city -->
+                            <!-- Search by city start-->
                             </ul>
                             <ul class="list-group list-group-horizontal mt-4 mb-4 justify-content-center">
                               <li class="list-group-item">
                                   <select name="select_city" class="mdb-select md-form" id="select_box2">
                                     {% for city in list_of_cities %}
                                     {% if city == select_value_city %}
-                                    <option value={{ city }} selected> {{ city }}</option>
+                                      <option value={{ city }} selected> {{ city }}</option>
                                     {% else %}
-                                    <option value={{ city }}> {{ city }}</option>
+                                      <option value={{ city }}> {{ city }}</option>
                                     {% endif %}
                                     {% endfor %} 
                                   </select>
                                   {% if number_of_shops_in_city > 0 %}
-                                        <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
-                                          {{ number_of_shops_in_city }}
-                                          <span class="visually-hidden">shops</span>
-                                        </span>
-                                      {% endif %}
+                                      <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                        {{ number_of_shops_in_city }}
+                                        <span class="visually-hidden">shops</span>
+                                      </span>
+                                  {% endif %}
                               </li>
                               <li class="list-group-item">
                                   <button type="submit" name="submit" class="btn btn-dark ">Search</button>
                               </li>
-                          </ul>
-
+                            </ul>
+                            <!-- Search by city end -->
                           </form>
                         </div>
+                        <!-- Container for columns end -->
                       
-                      {% if nie_znalezione_do_html or empty_list %}
+
+                      {% if unknown_to_html or empty_list %}
+                      <!-- Second column for non-included addresses or text start -->
                         <div class="d-flex container-fluid">
                           <h4 class=" mb-xs-4 vertical-center text-center text-lg-start justify-content-center" style="width: 100%;">
 
                             {{ empty_list }} 
 
-                            {% if nie_znalezione_do_html%}
-
-                              <!-- Modal for addresses -->
+                            <!-- Non-included addresses start-->
+                            {% if unknown_to_html %}
+                            <!-- Modal for addresses start -->
                                 <div class="modal fade" id="AddressesModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable text-start">
-                                  <div class="modal-content">
-                                    <div class="modal-header justify-content-center">
-                                      <h5 class="modal-title" id="exampleModalLabel">Not covered addresses</h5>
-                                    </div>
-                                  <div class="modal-body justify-content-start">
-                                      <h6>{% for shops in nie_znalezione_do_html %}-> {{ shops }}<br>{% endfor %}</h6>
-                                  </div>
-                                    <div class="modal-footer justify-content-center">  
-                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable text-start">
+                                    <div class="modal-content">
+                                      <div class="modal-header justify-content-center">
+                                        <h5 class="modal-title" id="exampleModalLabel">Not covered addresses</h5>
+                                      </div>
+                                    <div class="modal-body justify-content-start">
+                                      <h6>{% for shops in unknown_to_html %}-> {{ shops }}<br>{% endfor %}</h6>
+                                      </div>
+                                        <div class="modal-footer justify-content-center">  
+                                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
                                     </div>
                                   </div>
                                 </div>
-                                </div>
+                            <!-- Modal for addresses end -->
 
-                            <!-- Modal button-->
+                            <!-- Modal button start -->
                             <ul class="list-group list-group-horizontal">
                               <li class="list-group-item border-0">
-
-                            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#AddressesModal" role="button">View non-included                             
-                              <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
-                                {{ ilosc_nieznalezionych }}
-                                <span class="visually-hidden">non_showed_shops</span>
-                              </span>
-                            </button>
-                                
+                                <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#AddressesModal" role="button">View non-included                             
+                                  <span id="badge" class="position-absolute top-0 end-0  badge rounded-pill bg-danger">
+                                    {{ unknown_quantity }}
+                                    <span class="visually-hidden">non_showed_shops</span>
+                                  </span>
+                                </button>
                               </li>
                             </ul>
-                            {% endif %}
+                            <!-- Modal button end -->
 
+                            {% endif %}
+                            <!-- Non-included addresses end-->
                           </h4>
                         </div>
+
+                      <!-- Second column for non-included addresses or text end -->
                       {% endif %}
 
                     </div>  
