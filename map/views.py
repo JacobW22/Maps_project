@@ -279,18 +279,22 @@ def index(request):
 
 
 
-    shop_list = Shop.objects.filter().all().order_by('city')
+    shop_list = Shop.objects.values_list('city',flat=True).distinct().order_by('city')
 
     name_of_shops = dict_from_other_file.values()
 
     list_of_cities.append("Choose your city")
 
-    for i in shop_list:
-        if i.city != '' and i.city != 'empty':
-            if bool(re.search(r'\d', i.city)) == False and i.city not in name_of_shops:
-                list_of_cities.append((i.city).replace(',',''))   
+    def has_numbers(inputString):
+            return any(char.isdigit() for char in inputString)
 
-    
+    for city in shop_list:
+        if city != "empty" and has_numbers(city) != True and city:
+                list_of_cities.append((city).replace(',',''))   
+                if city in name_of_shops:
+                    list_of_cities.remove(city)
+
+
 
     list_of_cities = list(dict.fromkeys(list_of_cities))
     
