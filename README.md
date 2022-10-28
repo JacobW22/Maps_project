@@ -25,7 +25,6 @@
 
 
 ## Features
-List the ready features here:
 - You can choose between searching by a shop name or a city
 - You can reset the database and load new data
 - You can use free API
