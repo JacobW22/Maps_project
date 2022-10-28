@@ -49,7 +49,7 @@ $ python manage.py runserver
 
 
 ## Project Status
-Project is: _being worked on occasionally_ 
+_being worked on occasionally_ 
 
 
 ## Acknowledgements
