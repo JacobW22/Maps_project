@@ -17,7 +17,7 @@
 - This application allow you to search among 70,000 addresses of well-known companies in Poland.
 - The goal of this project was to polish skills and make something functional, useful to everyone.
 - A small number of addresses may have been incorrectly processed by a poor-quality geocoder, but all the database content is correct and has the correct addresses.
-- You can see the list of shops used by this program in Available_shops.txt
+- You can see the list of shops used by this program in Available_shops.txt file
 
 ## Technologies Used
 - Django - 4.0
