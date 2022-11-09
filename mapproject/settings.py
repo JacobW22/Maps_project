@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -21,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-t^i61q#5=5!sgquuzn0-u05#usi^%h5un#fhztugjfkx@7$h)g'
+SECRET_KEY = 'n+tpqvt!5j4wlikhd8h7$pu$1_5#g4dhnfw^9vh-v6qdyuzlp='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -141,3 +142,17 @@ REST_FRAMEWORK = {
 SWAGGER_SETTINGS = {
    'USE_SESSION_AUTH': False
 }
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_HSTS_SECONDS = 1
+
+SECURE_HSTS_PRELOAD = True
+
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+SECURE_SSL_REDIRECT = True
+
+CSRF_COOKIE_SECURE = True
+
+django_heroku.settings(locals())
