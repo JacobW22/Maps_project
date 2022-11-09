@@ -8,11 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Shop Finder</title>
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
-    <link href="{% static 'bootstrap/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link href="{% static 'bootstrap/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'dselect/dselect.css' %}">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 
-    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'dselect/dselect.js' %}"></script> 
 
   </head>
@@ -195,12 +195,22 @@
 
   dselect(select_box_element, {
       search: true,
-      clearable: true, 
+
+      {% if select_value == "default" %}
+      clearable: false,
+      {% else %}
+      clearable: true,
+      {% endif %} 
   }); 
   
   dselect(select_box_element2, {
       search: true,
-      clearable: true, 
+
+      {% if select_value_city == "Choose your shop" or select_value_city == "Choose" %}
+      clearable: false,
+      {% else %}
+      clearable: true,
+      {% endif %}
   });
 
 </script>

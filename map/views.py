@@ -213,7 +213,6 @@ def index(request):
 
             Shop.objects.all().delete()
             
-            # for i in range(16,20):
             for i in range(0, len(dict_from_other_file)):
                 if i == 2:
                     pass
