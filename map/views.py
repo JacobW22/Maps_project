@@ -213,7 +213,7 @@ def index(request):
 
             Shop.objects.all().delete()
             
-            for i in range(10, len(dict_from_other_file)):
+            for i in range(10, len(dict_from_other_file)): # range from 10 is only for testing purpose, basic = 0
                 if i == 2:
                     pass
                 else:
@@ -236,15 +236,15 @@ def index(request):
                                     data = Shop(name=i[-1], city=i[-2], address=i[0], latitude=location.latitude, longitude=location.longitude,open_hours=description)
                                     data.save()
 
-                                except GeocoderTimedOut as e:
-                                    print(e)
+                                except GeocoderTimedOut as error:
+                                    print(error)
                             else: 
                                 data = Shop(name=i[-1], address=i[0], open_hours=description, city=i[-2], longitude = 0, latitude = 0)
                                 data.save()       
         
 
-    # Write non-included addresses to file
 
+    # Write non-included addresses to file
 
     f = open("static/nie_znalezione_adresy.txt", "w")
 
@@ -259,7 +259,7 @@ def index(request):
     f.close()
 
 
-    # Search shops to second select options
+    # Search shops for second <select> options
 
     shop_list = Shop.objects.values_list('city',flat=True).distinct().order_by('city')
 
