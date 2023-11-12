@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'n+tpqvt!5j4wlikhd8h7$pu$1_5#g4dhnfw^9vh-v6qdyuzlp='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -143,16 +143,16 @@ SWAGGER_SETTINGS = {
    'USE_SESSION_AUTH': False
 }
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
-SECURE_HSTS_SECONDS = 1
+# SECURE_HSTS_SECONDS = 1
 
-SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_PRELOAD = True
 
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-SECURE_SSL_REDIRECT = True
+# SECURE_SSL_REDIRECT = True
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 django_heroku.settings(locals())
