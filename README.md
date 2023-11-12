@@ -1,6 +1,5 @@
 # Shop Finder
 > Shop Finder is an application that allows you to search and display all the stores across Poland.
-> Live demo [_here_](https://shopfinderr.herokuapp.com). 
 
 ## Table of Contents
 * [General Info](#general-information)
