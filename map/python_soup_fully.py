@@ -99,18 +99,21 @@ def main(shop_number):
 			if "(" in i:
 				do_usuniecia.append(i)
 
-			if "tel" in i and has_numbers(i) == True:
+			if "tel" in i and has_numbers(i):
 				do_usuniecia.append(i)
 				
 			if "tel." in i:
 				do_usuniecia.append(i)
 
+			if i.isnumeric():
+				do_usuniecia.append(i)
+
 
 
 		for i in do_dodania2:
-			if "Tel" in i and has_numbers(i) == True:
+			if "Tel" in i and has_numbers(i):
 				do_dodania2.remove(i)
-			if "tel" in i and has_numbers(i) == True:
+			if "tel" in i and has_numbers(i):
 				do_dodania2.remove(i)
 
 
@@ -118,7 +121,10 @@ def main(shop_number):
 			if "(" in i and "," not in i:
 				do_usuniecia.remove(i)
 
-			if "tel" in i and has_numbers(i) == True:
+			if "tel" in i and has_numbers(i):
+				do_usuniecia.remove(i)
+
+			if i.isnumeric():
 				do_usuniecia.remove(i)
 
 
@@ -186,7 +192,7 @@ def main(shop_number):
 
 
 
-	# Check how many pages 
+	# Check how many pages of shop available
 
 	result = requests.get(url)
 	doc = BeautifulSoup(result.text, "html.parser")
@@ -203,7 +209,8 @@ def main(shop_number):
 	lista_sklepow = []
 
 
-	# Create range from first page to last
+	# Create list of available shops 
+	# Show page info
 
 	if strony == "":
 		print(url)
@@ -223,18 +230,14 @@ def main(shop_number):
 		zakres = [ int(x) for x in elem ]
 
 
-
-	# Show addresses
-
-
 		print(zakres)
 		print()
 
-
-		for i in range(zakres[0],zakres[-1]+1):	# First page and last 
+		# Range from first page and last
+		for i in range(zakres[0],zakres[-1]+1):  
 			replacementStr = str(i)
 
-			if i < 10:	# Create links for pages
+			if i < 10:	# Create urls for pages
 				url = url[:-1] + replacementStr
 			elif i == 10:
 				url = url[:-2] + "/" + replacementStr

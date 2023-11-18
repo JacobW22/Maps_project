@@ -1,16 +1,30 @@
-html,body {
+  html,body {
     width: 100%;
     height: 100%; 
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
     overflow-x: hidden; 
   } 
+
+  body {
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    font-smooth: auto;
+    font-synthesis: none;
+    font-synthesis-weight: none;
+    font-synthesis-style: none;
+    font-synthesis-small-caps: none;
+    font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern";
+  }
 
   #lower_container {
     padding: 0px;
   }
 
-  footer > hr,div{
+  footer > hr, div:not(.accordion-body, footer > div, .dropdown) {
     margin-bottom: 12px;
   }
 
@@ -22,6 +36,8 @@ html,body {
     max-height: 500px;
     width: 75rem;
     margin: auto;
+    border-radius: 15px;
+    outline: 0.2rem solid black;
   }
 
   #map > div > div{ 
@@ -63,12 +79,49 @@ html,body {
     border-top-width: 1px;
   }
 
+  .rounded-start {
+    border-top-left-radius: 15px!important;
+    border-bottom-left-radius: 15px!important;
+    border-top-right-radius: 15px!important;
+    border-bottom-right-radius: 15px!important;
+  }
+
+  .btn{
+    border: 0;
+    transition: all 0.3s;
+  }
+
+  .non-included-btn:hover {
+    color: black!important;
+    background: lightgray!important;
+  }
+  
+  .btn:not(.non-included-btn ):hover {
+    color: black!important;
+    background: lightgray!important;
+    transform: translateY(-5%);
+  }
+
+  .reset-db-btn:hover {
+    transform: translateY(-15%);
+  }
+
   @media (min-width: 400px) {
     .list-group {
       flex-direction: row;
     }
   }
 
+  @media (max-width: 400px) {
+    .item1 {
+      border: 1px solid lightgray!important;
+      border-radius: 0!important;
+    }
+    .item2 {
+      border: 0!important;
+    }
+  }
+  
   @media (min-width: 992px) { 
       .col-md-4 {
         overflow: hidden;
@@ -92,26 +145,12 @@ html,body {
       }
    }
 
-  @media (min-width: 1400px) { 
-    #footer_about_app {
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-    }
-  }
-
   #nie_znalezione {
     resize: none;
   }
 
-
   #noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+    user-select: none;
   }
 
   #badge {
@@ -120,6 +159,21 @@ html,body {
     right: 0%;
   } 
 
+  .info-circle {
+    font-size: 1.5em;
+  }
+
+  .db-quantity {
+    color: black;
+    font-size: 1.25rem;
+    user-select: none;
+  }
+
+  .quantity_number {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
   .link {
     color: inherit;
     text-decoration: inherit;
@@ -127,7 +181,6 @@ html,body {
     -moz-transition: color 0.25s;
     -o-transition: color 0.25s;
     transition: color 0.25s;
-
   }
 
   .link:hover {

@@ -213,7 +213,8 @@ def index(request):
 
             Shop.objects.all().delete()
             
-            for i in range(10, len(dict_from_other_file)): # range from 10 is only for testing purpose, basic = 0
+            # for i in range(10, len(dict_from_other_file)): # range from 10 is only for testing purpose, basic = 0
+            for i in range(0,3): # range from 10 is only for testing purpose, basic = 0
                 if i == 2:
                     pass
                 else:
@@ -225,7 +226,9 @@ def index(request):
                     else:        
                         for i in lista_z_pliku:
                             print("Loading data...")
-                            locator = Nominatim(user_agent="myGeocoder")
+                            locator = Nominatim(user_agent="map_project")
+
+                            print(i[0])
 
                             location = locator.geocode(i[0]+", Polska", timeout = 10)
                         
@@ -292,6 +295,8 @@ def index(request):
     LocateControl().add_to(m)
 
     m = m._repr_html_()
+
+    db_quantity = Shop.objects.count()
     
     context = {
         'm' : m,
@@ -304,6 +309,7 @@ def index(request):
         'select_value_city' : select_value_city,
         'unknown_quantity' : unknown_quantity,
         'list_of_cities' : list_of_cities,
+        'db_quantity' : db_quantity,
     }
 
 

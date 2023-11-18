@@ -27,12 +27,15 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse my-auto" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto">  
+            <ul class="navbar-nav me-auto align-items-center">  
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'schema-swagger-ui' %}" class="link">Api</a>
               </li> 
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'AboutApp' %}" class="link">About App</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link db-quantity">&#128722;In database: <span class="quantity_number">{{ db_quantity }}</span> shops</a>
               </li>
             </ul>
           </div>
@@ -47,13 +50,13 @@
                 <div class="col-10 offset-1"> 
 
                   <div class="d-flex justify-content-center">
-                    <h3>Map</h3> 
+                    <h3>&#128506;Map</h3> 
                   </div>
                   
                   <!-- Reset button start -->
                   <form method="post" class="d-flex justify-content-center">
                     {% csrf_token %}
-                    <button type="submit" name="submit" class="btn btn-dark mb-4 mt-2" onclick="return confirm('Estimated time to fully load data:\naround 10 hours')" value="reset">Reset Database</button>
+                    <button type="submit" name="submit" class="btn btn-dark mb-4 mt-2 reset-db-btn" onclick="return confirm('Estimated time to fully load data:\naround 10 hours')" value="reset">Reset Database</button>
                   </form>
                   <!-- Reset button end -->
 
@@ -120,7 +123,7 @@
                             <!-- Modal button start -->
                             <ul class="list-group">
                               <li class="list-group-item border-0 mx-auto">
-                                <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#AddressesModal" role="button">View non-included                             
+                                <button type="button" class="btn btn-dark non-included-btn" data-bs-toggle="modal" data-bs-target="#AddressesModal" role="button">View non-included                             
                                   <span id="badge" class="position-absolute badge rounded-pill bg-danger">
                                     {{ unknown_quantity }}
                                     <span class="visually-hidden">non_showed_shops</span>
@@ -163,7 +166,7 @@
                     </div>  
                 </div>    
 
-                  <div id="map" class="col-sm-10 offset-sm-1">
+                  <div id="map" class="col-sm-10 mt-5 mt-sm-3 offset-sm-1">
                     {{m|safe}}
                   </div>
             </div>
@@ -173,7 +176,7 @@
 <!-- Footer start -->
 <footer>
   <hr>
-  <div class="text-center">
+  <div class="text-center pb-3">
     © 2022 Shop Finder
   </div>
 </footer>
