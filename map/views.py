@@ -12,7 +12,7 @@ from drf_yasg.utils import swagger_auto_schema
 import folium
 import re 
 
-from map import python_soup_fully 
+from map import python_soup_fully   
 from map.models import Shop
 from map.python_soup_fully import list_of_shops_in_dict
 from map.serializers import ShopSerializer
@@ -210,40 +210,7 @@ def index(request):
         #  Sending data from scraping to database 
 
         if request.POST['submit'] == 'reset':
-
-            Shop.objects.all().delete()
-            
-            # for i in range(10, len(dict_from_other_file)): # range from 10 is only for testing purpose, basic = 0
-            for i in range(0,3): # range from 10 is only for testing purpose, basic = 0
-                if i == 2:
-                    pass
-                else:
-                    lista_z_pliku = python_soup_fully.main(i)
-                                
-                    if lista_z_pliku[0] == "Nie znaleziono adresów":
-                            data = Shop(name=lista_z_pliku[1], city = "empty", latitude=0, longitude=0)
-                            data.save()
-                    else:        
-                        for i in lista_z_pliku:
-                            print("Loading data...")
-                            locator = Nominatim(user_agent="map_project")
-
-                            print(i[0])
-
-                            location = locator.geocode(i[0]+", Polska", timeout = 10)
-                        
-                    
-                            if location is not None:
-                                try:
-                                    description = i[1].replace(",","<br>")
-                                    data = Shop(name=i[-1], city=i[-2], address=i[0], latitude=location.latitude, longitude=location.longitude,open_hours=description)
-                                    data.save()
-
-                                except GeocoderTimedOut as error:
-                                    print(error)
-                            else: 
-                                data = Shop(name=i[-1], address=i[0], open_hours=description, city=i[-2], longitude = 0, latitude = 0)
-                                data.save()       
+            reload_db()   
         
 
 
@@ -315,3 +282,39 @@ def index(request):
 
 
     return render(request, 'index.html', context)
+
+
+def reload_db():
+    Shop.objects.all().delete()
+            
+    # for i in range(10, len(dict_from_other_file)): # range from 10 is only for testing purpose, basic = 0
+    for i in range(0,3): # range from 10 is only for testing purpose, basic = 0
+        if i == 2:
+            pass
+        else:
+            lista_z_pliku = python_soup_fully.main(i)
+
+            if lista_z_pliku[0] == "Nie znaleziono adresów":
+                    data = Shop(name=lista_z_pliku[1], city = "empty", latitude=0, longitude=0)
+                    data.save()
+            else:        
+                for i in lista_z_pliku:
+                    print("Loading data...")
+                    locator = Nominatim(user_agent="map_project")
+
+                    print(i[0])
+
+                    location = locator.geocode(i[0]+", Polska", timeout = 10)
+                
+            
+                    if location is not None:
+                        try:
+                            description = i[1].replace(",","<br>")
+                            data = Shop(name=i[-1], city=i[-2], address=i[0], latitude=location.latitude, longitude=location.longitude,open_hours=description)
+                            data.save()
+
+                        except GeocoderTimedOut as error:
+                            print(error)
+                    else: 
+                        data = Shop(name=i[-1], address=i[0], open_hours=description, city=i[-2], longitude = 0, latitude = 0)
+                        data.save()    

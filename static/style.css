@@ -28,6 +28,13 @@
     margin-bottom: 12px;
   }
 
+  footer > hr {
+    border-top: 2px solid black;
+    margin-inline: auto;
+    width: 75%;
+    opacity: 1;
+  }
+
   #map {
     max-width: 95%;
   }
@@ -115,7 +122,8 @@
   @media (max-width: 400px) {
     .item1 {
       border: 1px solid lightgray!important;
-      border-radius: 0!important;
+      border-top-right-radius: 15px!important;
+      border-bottom-right-radius: 15px!important;
     }
     .item2 {
       border: 0!important;

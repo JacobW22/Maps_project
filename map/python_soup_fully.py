@@ -182,7 +182,6 @@ def main(shop_number):
 
 		return data
 
-	
 	selected_shop = dict[dict_name_of_shops[int(shop_number)]]	# Search link to selected shop
 
 
