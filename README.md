@@ -32,6 +32,7 @@
 
 ## Screenshots
 ![Example screenshot](static/images/example_screenshot.png)
+![Example screenshot](static/images/example_screenshot_new.png)
 
 
 ## Setup
