@@ -1,6 +1,5 @@
 # Shop Finder
 > Shop Finder is an application that allows you to search and display all the stores across Poland.
-> Live demo [_here_](https://shopfinderr.herokuapp.com). 
 
 ## Table of Contents
 * [General Info](#general-information)
@@ -20,12 +19,13 @@
 - You can see the list of shops used by this program in Available_shops.txt file
 
 ## Technologies Used
-- Django - 4.0
-- Django Rest Framework - 3.14.0
+- Django - v4.0
+- Django Rest Framework - v3.14.0
+- Folium - v0.12.1.post1
 
 
 ## Features
-- You can choose between searching by a shop name or a city
+- You can choose between searching by a shop name or a city 
 - You can reset the database and load new data
 - You can use free API
 
@@ -43,8 +43,10 @@ $ cd ../Mapproject
 $ python -m venv env 
 $ env\Scripts\activate
 $ python -m pip install -r requirements.txt
-$ python manage.py makemigrations
-$ python manage.py migrate
+
+$ python manage.py makemigrations } optional
+$ python manage.py migrate } optional
+
 $ python manage.py runserver
 ```
 
